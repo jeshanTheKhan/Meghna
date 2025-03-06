@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', action: function () {
     return view('dashboard');
@@ -17,4 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
 require __DIR__.'/auth.php';
