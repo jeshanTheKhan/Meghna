@@ -111,8 +111,8 @@
                <a  class="app-brand-link gap-2">
                  <span class="app-brand-logo demo">
                  </span>
-                 <img src="{{ asset('storage/back/media/logo/Oxygen_Cylinder_Logo-removebg-preview.png') }}" style="width: 23%" alt="" srcset="">
-                 <span class="app-brand-text demo text-body fw-bolder"> <span style="padding-left: 20px">Meghna CNG</span> <br> Retesting Center</span>
+                 <img src="{{ asset('storage/back/media/logo/Oxygen_Cylinder_Logo-removebg-preview.png') }}" style="width: 40%;margin-left:90px;" alt="" srcset="">
+                 {{-- <span class="app-brand-text demo text-body fw-bolder">MEGHNA ENGINEERING <br> CYLINDER RE-TEST CENTER</span> --}}
                </a>
              </div>
              <!-- /Logo -->
@@ -165,12 +165,12 @@
                </div>
              </form>
 
-             {{-- <p class="text-center">
+             <p class="text-center">
                <span>New on our platform?</span>
-               <a href="auth-register-basic.html">
+               <a href="{{ route('register') }}">
                  <span>Create an account</span>
                </a>
-             </p> --}}
+             </p>
            </div>
          </div>
          <!-- /Register -->

@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', action: function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('home');
+    return view('auth.login');
+});
 
-Route::get('/dashboard', function () {
+Route::get('/User-dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
