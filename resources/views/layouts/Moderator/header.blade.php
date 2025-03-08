@@ -15,6 +15,9 @@
       <link href="{{asset('storage/back/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
       <link href="{{asset('storage/back/admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
       <link href="{{asset('storage/back/admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+
+          <!-- Toaster & Sweetalert Style -->
+    <link href="{{asset('public/backend/build/css/toastr.css')}}" rel="stylesheet">
     
     <!-- Custom Theme Style -->
     <link href="{{asset('storage/back/admin/build/css/custom.min.css')}}" rel="stylesheet">

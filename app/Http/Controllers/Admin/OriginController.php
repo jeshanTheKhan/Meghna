@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
 class OriginController extends Controller
 {
     //Load add File
@@ -15,4 +16,6 @@ class OriginController extends Controller
     public function table(){
         return view('Admin.Origin.all-origin');
     }
+    // Save Origin
+   
 }

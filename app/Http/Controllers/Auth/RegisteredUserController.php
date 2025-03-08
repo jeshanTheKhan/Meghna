@@ -36,7 +36,7 @@ class RegisteredUserController extends Controller
          $request->validate([
              'name' => ['required', 'string', 'max:255'],
              'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+             'password' => ['required', 'confirmed'],
          ]);
      
          if (User::where('email', $request->email)->exists()) {
@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
              'name' => $request->name,
              'user_name' => $username, // Store generated username
              'email' => $request->email,
-             'password' => Hash::make($request->password),
+             'password' => $request->password,
          ]);
      
          event(new Registered($user));

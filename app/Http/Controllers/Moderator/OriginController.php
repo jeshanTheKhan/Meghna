@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Moderator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Origin;
 
 class OriginController extends Controller
 {
@@ -13,6 +14,13 @@ class OriginController extends Controller
     }
     //Load Table File
     public function table(){
-        return view('Moderator.Origin.all-origin');
+        $origin=Origin::all();
+        return view('Moderator.Origin.all-origin',compact('origin'));
+    }
+    public function save(Request $req){
+        $store=new Origin();
+        $store->name=$req->name;
+        $store->save();
+        return redirect()->route('moderator.all.cylinder-origin');
     }
 }

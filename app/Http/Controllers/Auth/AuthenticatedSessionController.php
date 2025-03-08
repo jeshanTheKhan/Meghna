@@ -30,9 +30,9 @@ class AuthenticatedSessionController extends Controller
         if($request->user()->user_role === 'admin'){
             return redirect()->route('admin.home');
         }
-        // if($request->user()->user_role === 'shop_kepper'){
-        //     return redirect()->route('shop.home');
-        // }
+        if($request->user()->user_role === 'client'){
+            return redirect()->route('dashboard');
+        }
         if($request->user()->user_role === 'moderator'){
             return redirect()->route('moderator.home');
         }

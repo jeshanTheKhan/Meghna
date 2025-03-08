@@ -56,8 +56,31 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="">
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('moderator.save.report') }}">
                                     @csrf
+                                     {{-- Manufacture Date --}}
+                                     <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align ">Test Date <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input class="date-picker form-control" name="test_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                            <script>
+                                                function timeFunctionLong(input) {
+                                                    setTimeout(function() {
+                                                        input.type = 'text';
+                                                    }, 60000);
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                    {{-- Serial Number --}}
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Serial Number <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="first-name" name="serial" required="required" class="form-control ">
+                                        </div>
+                                    </div>
                                     {{-- Customer Name --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Customer Name <span class="required">*</span>
@@ -71,7 +94,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Customer Username <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="username" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Vehicle Registration Number --}}
@@ -79,19 +102,19 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Vehicle Registration Number <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="vehicle" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Cylinder Manufacturer --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Cylinder Manufacture</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required">
+                                            <select class="form-control" required="required" name="cyliner_manu">
                                                 <option>Choose option</option>
-                                                <option>Option one</option>
-                                                <option>Option two</option>
-                                                <option>Option three</option>
-                                                <option>Option four</option>
+                                                @foreach ($cylinder as $cylinder)
+                                                <option value="{{ $cylinder->name }}">{{ $cylinder->name }}</option>
+                                                @endforeach
+                                            
                                             </select>
                                         </div>
                                     </div>
@@ -100,19 +123,19 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Number <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="cylinder_number" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Country Of Origin --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Country Of Origin</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required">
+                                            <select class="form-control" required="required" name="cylinder_origin">
                                                 <option>Choose option</option>
-                                                <option>Option one</option>
-                                                <option>Option two</option>
-                                                <option>Option three</option>
-                                                <option>Option four</option>
+                                                @foreach ($origin as $origin)
+                                                <option value="{{ $origin->name }}">{{ $origin->name }}</option>
+                                                @endforeach
+                                             
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +144,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Manufacture Date <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                            <input class="date-picker form-control" name="manu_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
                                             <script>
                                                 function timeFunctionLong(input) {
                                                     setTimeout(function() {
@@ -136,7 +159,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Water Capacity <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="water_capacity" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Marked weight --}}
@@ -144,7 +167,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Marked weight <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="marked_weight" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Cylinder Installation/Use Date --}}
@@ -152,7 +175,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Installation/Use Date <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="cylinder_installation" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Cylinder Type / Standard --}}
@@ -160,17 +183,17 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Type / Standard <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="cylinder_type" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Marking Defects --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Marking Defects</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required">
+                                            <select class="form-control" required="required" name="marking_defects">
                                                 <option>Choose option</option>
-                                                <option>Yes</option>
-                                                <option>No</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -178,10 +201,10 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Crack</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required">
+                                            <select class="form-control" required="required" name="crack">
                                                 <option>Choose option</option>
-                                                <option>Yes</option>
-                                                <option>No</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -189,10 +212,10 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Thred Condition</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required">
+                                            <select class="form-control" required="required" name="thred">
                                                 <option>Choose option</option>
-                                                <option>Good</option>
-                                                <option>Not Good</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Not Good">Not Good</option>
                                             </select>
                                         </div>
                                     </div>
@@ -200,10 +223,10 @@
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Inside Condition</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required">
+                                            <select class="form-control" required="required" name="Inside">
                                                 <option>Choose option</option>
-                                                <option>Good</option>
-                                                <option>Not Good</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Not Good">Not Good</option>
                                             </select>
                                         </div>
                                     </div>
@@ -212,7 +235,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Actual Weight <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="actual_weight" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Test Step --}}
@@ -220,7 +243,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Test Step <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="test_step" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Test Pressure --}}
@@ -228,7 +251,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Test Pressure <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="test_pressure" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Water Hiter Temperature --}}
@@ -236,7 +259,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Water Hiter Temperature <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="water_hiter" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Total Expansion --}}
@@ -244,7 +267,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Total Expansion <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="total_expension" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Permanent Expansion --}}
@@ -252,7 +275,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Permanent Expansion <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="permanent_expension" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Percentage Of(TE/PE) --}}
@@ -260,7 +283,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Percentage Of(TE/PE) <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="percentage" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Thickness Test --}}
@@ -268,7 +291,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Thickness Test <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="thickness_test" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Air Dry Pressure --}}
@@ -276,7 +299,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Air Dry Pressure <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" name="air_dry" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Next Re-Test Time --}}
@@ -284,7 +307,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Next Re-Test Time <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                            <input class="date-picker form-control" placeholder="dd-mm-yyyy" name="next_test" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
                                             <script>
                                                 function timeFunctionLong(input) {
                                                     setTimeout(function() {
@@ -298,10 +321,21 @@
                                      <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Physical Properties result</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required">
+                                            <select class="form-control" required="required" name="physical_result">
                                                 <option>Choose option</option>
-                                                <option>Good</option>
-                                                <option>Not Good</option>
+                                                <option value="Pass">Pass</option>
+                                                <option value="Fail">Fail</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                     {{-- Hydrostatic Stress result --}}
+                                     <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align ">Hydrostatic Stress result</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select class="form-control" required="required" name="hydro_result">
+                                                <option>Choose option</option>
+                                                <option value="Pass">Pass</option>
+                                                <option value="Fail">Fail</option>
                                             </select>
                                         </div>
                                     </div>

@@ -55,6 +55,9 @@
      <script src="{{asset('storage/back/admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
      <script src="{{asset('storage/back/admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
+      <!-- Toaster & Sweetalert Style -->
+ <script src="{{asset('public/backend/build/js/toastr.min.js')}}"></script>
+
     <!-- Custom Theme Scripts -->
     <script src="{{asset('storage/back/admin/build/js/custom.min.js')}}"></script>
 

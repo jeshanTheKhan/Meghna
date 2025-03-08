@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Moderator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Cylinder;
 
 class CylinderController extends Controller
 {
@@ -13,6 +14,15 @@ class CylinderController extends Controller
     }
     //View Table File
     public function table(){
-        return view('Moderator.Cylinder.all-cylinder');
+        $cylinder=Cylinder::all()->where('status',1);
+        return view('Moderator.Cylinder.all-cylinder',compact('cylinder'));
     }
+    // Save Cylinder
+    public function save(Request $req){
+        $store=new Cylinder();
+        $store->name=$req->name;
+        $store->save();
+        return redirect()->route('moderator.all.cylinder-manu');
+    }
+
 }
