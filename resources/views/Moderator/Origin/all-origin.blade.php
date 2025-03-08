@@ -65,7 +65,6 @@
                             <tr>
                               <th>Serial Number</th>
                               <th>Name</th>
-                              <th>Status</th>
                             </tr>
                           </thead>
     
@@ -78,7 +77,6 @@
                             <tr>
                               <td>{{ $sl++ }}</td>
                               <td>{{ $origin->name }}</td>
-                              <td>Edinburgh</td>
                             </tr>
                             @endforeach
                             

@@ -10,8 +10,8 @@
 
     <title>Add Cylinder Report | </title>
 
-    @extends('layouts.Admin.backend')
-    @section('content')
+    @extends('layouts.Moderator.backend')
+    @section('context')
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
@@ -56,14 +56,14 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('admin.save.report') }}">
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('moderator.update.report') }}">
                                     @csrf
                                      {{-- Manufacture Date --}}
                                      <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Test Date <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" name="test_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                            <input class="date-picker form-control" value="{{ $report->test_date }}" name="test_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
                                             <script>
                                                 function timeFunctionLong(input) {
                                                     setTimeout(function() {
@@ -78,7 +78,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Serial Number <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="serial" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->serial_number }}" name="serial" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Customer Name --}}
@@ -86,7 +86,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Customer Name <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="name" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->name }}" name="name" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Customer Username --}}
@@ -94,7 +94,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Customer Username <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="username" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->user_name }}" name="username" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Vehicle Registration Number --}}
@@ -102,15 +102,15 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Vehicle Registration Number <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="vehicle" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->vehicle_number }}" name="vehicle" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Cylinder Manufacturer --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Cylinder Manufacture</label>
                                         <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" required="required" name="cyliner_manu">
-                                                <option>Choose option</option>
+                                            <select class="form-control" required="required" name="cyliner_manu" >
+                                                <option>{{ $report->cylinder_manu }}</option>
                                                 @foreach ($cylinder as $cylinder)
                                                 <option value="{{ $cylinder->name }}">{{ $cylinder->name }}</option>
                                                 @endforeach
@@ -123,7 +123,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Number <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="cylinder_number" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->cylinder_number }}" name="cylinder_number" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Country Of Origin --}}
@@ -131,7 +131,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Country Of Origin</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" required="required" name="cylinder_origin">
-                                                <option>Choose option</option>
+                                                <option>{{ $report->cylinder_origin }}</option>
                                                 @foreach ($origin as $origin)
                                                 <option value="{{ $origin->name }}">{{ $origin->name }}</option>
                                                 @endforeach
@@ -144,7 +144,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Manufacture Date <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" name="manu_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                            <input class="date-picker form-control" value="{{ $report->manufacture_date }}" name="manu_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
                                             <script>
                                                 function timeFunctionLong(input) {
                                                     setTimeout(function() {
@@ -159,7 +159,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Water Capacity <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="water_capacity" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->water_capacity }}" name="water_capacity" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Marked weight --}}
@@ -167,7 +167,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Marked weight <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="marked_weight" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->marked_weight }}" name="marked_weight" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Cylinder Installation/Use Date --}}
@@ -175,7 +175,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Installation/Use Date <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="cylinder_installation" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->cylinder_installation }}" name="cylinder_installation" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Cylinder Type / Standard --}}
@@ -183,7 +183,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Type / Standard <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="cylinder_type" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->cylinder_type }}" name="cylinder_type" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Marking Defects --}}
@@ -191,7 +191,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Marking Defects</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" required="required" name="marking_defects">
-                                                <option>Choose option</option>
+                                                <option>{{ $report->marking_defects }}</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select>
@@ -202,7 +202,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Crack</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" required="required" name="crack">
-                                                <option>Choose option</option>
+                                                <option>{{ $report->crack }}</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select>
@@ -213,7 +213,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Thred Condition</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" required="required" name="thred">
-                                                <option>Choose option</option>
+                                                <option>{{ $report->thred_condition }}</option>
                                                 <option value="Good">Good</option>
                                                 <option value="Not Good">Not Good</option>
                                             </select>
@@ -224,7 +224,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Inside Condition</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" required="required" name="Inside">
-                                                <option>Choose option</option>
+                                                <option>{{ $report->inside_condition }}</option>
                                                 <option value="Good">Good</option>
                                                 <option value="Not Good">Not Good</option>
                                             </select>
@@ -235,7 +235,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Actual Weight <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="actual_weight" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->actual_weight }}" name="actual_weight" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Test Step --}}
@@ -243,7 +243,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Test Step <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="test_step" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->test_step }}" name="test_step" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Test Pressure --}}
@@ -251,7 +251,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Test Pressure <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="test_pressure" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->test_pressure }}" name="test_pressure" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Water Hiter Temperature --}}
@@ -259,7 +259,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Water Hiter Temperature <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="water_hiter" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->water_hiter }}" name="water_hiter" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Total Expansion --}}
@@ -267,7 +267,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Total Expansion <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="total_expension" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->total_expension }}" name="total_expension" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Permanent Expansion --}}
@@ -275,7 +275,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Permanent Expansion <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="permanent_expension" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->permanent_expension }}" name="permanent_expension" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Percentage Of(TE/PE) --}}
@@ -283,16 +283,16 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Percentage Of(TE/PE) <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="percentage" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->percentage }}" name="percentage" required="required" class="form-control ">
                                         </div>
                                     </div>
-                                 
+                                    
                                     {{-- Air Dry Pressure --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Air Dry Pressure <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="air_dry" required="required" class="form-control ">
+                                            <input type="text" id="first-name" value="{{ $report->air_dry }}" name="air_dry" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Next Re-Test Time --}}
@@ -300,7 +300,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Next Re-Test Time <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" placeholder="dd-mm-yyyy" name="next_test" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                            <input class="date-picker form-control" value="{{ $report->next_retest }}" placeholder="dd-mm-yyyy" name="next_test" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
                                             <script>
                                                 function timeFunctionLong(input) {
                                                     setTimeout(function() {
@@ -315,7 +315,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Physical Properties result</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" required="required" name="physical_result">
-                                                <option>Choose option</option>
+                                                <option>{{ $report->physical_test }}</option>
                                                 <option value="Pass">Pass</option>
                                                 <option value="Fail">Fail</option>
                                             </select>
@@ -326,7 +326,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Hydrostatic Stress result</label>
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" required="required" name="hydro_result">
-                                                <option>Choose option</option>
+                                                <option>{{ $report->hydrostatic_test }}</option>
                                                 <option value="Pass">Pass</option>
                                                 <option value="Fail">Fail</option>
                                             </select>
@@ -341,6 +341,7 @@
                                             <button class="btn btn-primary" type="reset"
                                                 onclick="resetForm()">Reset</button>
                                             <button type="submit" class="btn btn-success">Submit</button>
+                                            <input type="hidden" name="c_id" value="{{ $report->id }}">
                                         </div>
                                     </div>
 

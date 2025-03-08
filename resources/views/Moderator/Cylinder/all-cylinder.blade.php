@@ -65,7 +65,6 @@
                             <tr>
                               <th>Number</th>
                               <th>Name</th>
-                              <th>Action</th>
                             </tr>
                           </thead>
     
@@ -78,7 +77,6 @@
                             <tr>
                               <td>{{ $sl++ }}</td>
                               <td>{{ $cylinder->name }}</td>
-                              <td>Edinburgh</td>
                             </tr>
                             @endforeach
                            

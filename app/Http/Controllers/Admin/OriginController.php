@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Origin;
 
 
 class OriginController extends Controller
@@ -14,8 +15,22 @@ class OriginController extends Controller
     }
     //Load Table File
     public function table(){
-        return view('Admin.Origin.all-origin');
+        $origin=Origin::all();
+        return view('Admin.Origin.all-origin',compact('origin'));
     }
     // Save Origin
+    public function save(Request $req){
+        $store=new Origin();
+        $store->name=$req->name;
+        $store->save();
+        return redirect()->route('admin.all.cylinder-origin');
+    }
+    // Delete
+    public function delete($id){
+        $result = Origin::find($id);
+        // Delete the database entry
+        $result->delete();
+        return redirect()->back();
+    }
    
 }

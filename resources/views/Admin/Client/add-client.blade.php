@@ -56,7 +56,7 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="">
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('admin.save.client') }}">
                                     @csrf
 
                                     <div class="item form-group">

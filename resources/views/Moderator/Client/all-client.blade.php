@@ -66,7 +66,6 @@
                               <th>Number</th>
                               <th>Name</th>
                               <th>User-Name </th>
-                              <th>Action</th>
                             </tr>
                           </thead>
     
@@ -81,7 +80,6 @@
                               <td>{{ $sl++ }}</td>
                               <td>{{ $user->name }}</td>
                               <td>{{ $user->user_name }}</td>
-                              <td>$320,800</td>
                             </tr>
                             @endforeach
                             

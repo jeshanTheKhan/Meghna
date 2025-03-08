@@ -43,10 +43,14 @@ Route::get('/Moderator-Add-Cylinder-Report', [ReportController::class, 'index'])
         ->name('add.report');
 Route::get('/Moderator-All-Cylinder-Report', [ReportController::class, 'table'])->middleware(['auth', 'verified'])
         ->name('all.report');
+
         // save.report
         Route::post('/Moderator-Save-Report', [ReportController::class, 'save'])->middleware(['auth', 'verified'])
         ->name('save.report');
-        Route::get('/Moderator-view-Report/{id}', [ReportController::class, 'view'])->name('report.view');
+Route::get('/Moderator-view-Report/{id}', [ReportController::class, 'view'])->name('report.view');
+Route::get('/Moderator-Edit-Report/{id}', [ReportController::class, 'edit'])->name('report.edit');
+Route::post('/Moderator-Update-Report', [ReportController::class, 'update'])->middleware(['auth', 'verified'])
+->name('update.report');
 
 Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

@@ -10,8 +10,8 @@
 
     <title>Add Cylinder Origin | </title>
 
-    @extends('layouts.Admin.backend')
-    @section('content')
+    @extends('layouts.Moderator.backend')
+    @section('context')
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="">
+                                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('admin.save.origin') }}">
                                     @csrf
 
                                     <div class="item form-group">
