@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2025 at 05:20 AM
+-- Generation Time: Mar 08, 2025 at 04:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -149,7 +149,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('K2l6r550OQOd6JbfILyFUFQOaEEmhNf3mnMx3W94', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUVdPRWI5M2RqdXFXcjhYU2hFV1RKVTlXdVdsWll2VzhzS1FtdGJaUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHA6Ly9sb2NhbGhvc3QvTWVnaG5hIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741320381);
+('cjRtjlzAZzf9mvVV3wfdpwT2VCeBt1HmZTQj9v5w', NULL, '::1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Mobile Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOVNBMVhJZlJnaVROc2FQN01XY1FZeGF6c0JFMmo4cFZyOHZsdHN3ZCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHA6Ly9sb2NhbGhvc3QvTWVnaG5hIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741402955),
+('fgI7hdai5bnx1OnbGxQIDdu91X7Ty4Wkh7qCEU6M', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMXZEQ0E2SlowTXJNTHZ5aHNub1drWkdkYTRDbnh6UHNGeU1heklWQyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly9sb2NhbGhvc3QvTWVnaG5hL2FkbWluL0FkbWluLUFsbC1DeWxpbmRlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1741402979);
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `user_role` varchar(255) NOT NULL DEFAULT 'client',
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
@@ -175,8 +176,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `user_name`, `user_role`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Md.Moshin Khan', '@moshin13', 'admin', 'moshinkhan1303@gmail.com', '2025-03-06 09:31:59', '$2y$12$TsUnEQ78cXATEcTB.HEueu9RqVfgRvrhkq2RqNg5u7BJjAc2b8slS', 'MLtpU8bIjOI3dnoWST4kc7bv2YdHaiCymuMErshLxhkiCHS1ry16ntLgqWGl', '2025-03-06 09:31:59', '2025-03-06 09:31:59'),
-(2, 'Al Amin', '@alamin', 'moderator', 'meghna.retesting.cng@gmail.com', '2025-03-06 09:32:00', '$2y$12$swnmwmosuu3BgrAeHtcPCuYeEm33w77xW/k0sFrMG7XBjOeZuy4dG', 'eoXx8X3R3v1WhO4ek3PBfUTOHt6Ldnl6Ii13SjJnRfW0SfXFBRUBZqrGOXyb', '2025-03-06 09:32:00', '2025-03-06 09:32:00'),
+(1, 'Md.Moshin Khan', '@moshin13', 'admin', 'moshinkhan1303@gmail.com', '2025-03-06 09:31:59', '$2y$12$TsUnEQ78cXATEcTB.HEueu9RqVfgRvrhkq2RqNg5u7BJjAc2b8slS', 'V2Nn4SXpJoGSl3xcVPCBA2u7wycVkz661wlC2hYfPeItUrrwClQ1mhA7edik', '2025-03-06 09:31:59', '2025-03-06 09:31:59'),
+(2, 'Al Amin', '@alamin', 'moderator', 'meghna.retesting.cng@gmail.com', '2025-03-06 09:32:00', '$2y$12$swnmwmosuu3BgrAeHtcPCuYeEm33w77xW/k0sFrMG7XBjOeZuy4dG', 'IZ70JERkynKNbd346SyQ9zXzVqch1hIqz9h8wmRHcYfHd7n2mKmrnXGakRAr', '2025-03-06 09:32:00', '2025-03-06 09:32:00'),
 (6, 'Users', '@users_725', 'client', 'user@gmail.com', NULL, '$2y$12$6yAbgRQtHfqazKZK1zKeQ.nB/BaEPUUF5pkZaTuzT8cqlo2WVwYAi', NULL, '2025-03-06 22:04:32', '2025-03-06 22:04:32');
 
 --
@@ -240,8 +241,8 @@ ALTER TABLE `sessions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_user_name_unique` (`user_name`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_user_name_unique` (`user_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
