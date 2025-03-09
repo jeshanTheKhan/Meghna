@@ -208,6 +208,17 @@
                                             </select>
                                         </div>
                                     </div>
+                                    {{-- Dents --}}
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align ">Dents</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select class="form-control" required="required" name="dents">
+                                                <option>{{ $report->dents }}</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     {{-- Thred Condition --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Thred Condition</label>

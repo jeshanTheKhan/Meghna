@@ -23,7 +23,7 @@ class ClientController extends Controller
     }
     //Load Table File
     public function table(){
-        $user=User::where('user_role','client')->get();
+        $user = User::where('user_role', 'client')->orderBy('id', 'desc')->get();
         return view('Moderator.Client.all-client',compact('user'));
     }
     // Save Client information

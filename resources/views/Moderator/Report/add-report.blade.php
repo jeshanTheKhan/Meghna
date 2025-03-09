@@ -208,6 +208,17 @@
                                             </select>
                                         </div>
                                     </div>
+                                    {{-- Dents --}}
+                                    <div class="item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align ">Dents</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <select class="form-control" required="required" name="dents">
+                                                <option>Choose option</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     {{-- Thred Condition --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Thred Condition</label>
@@ -284,14 +295,6 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 ">
                                             <input type="text" id="first-name" name="percentage" required="required" class="form-control ">
-                                        </div>
-                                    </div>
-                                    {{-- Thickness Test --}}
-                                    <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Thickness Test <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="thickness_test" required="required" class="form-control ">
                                         </div>
                                     </div>
                                     {{-- Air Dry Pressure --}}

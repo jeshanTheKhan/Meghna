@@ -63,6 +63,7 @@
                   <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                       <tr>
+                        <th>Serial ID</th>
                         <th>Serial Number</th>
                         <th>Name</th>
                         <th>Username</th>
@@ -74,17 +75,22 @@
 
 
                     <tbody>
+                      @php
+                        $sl=1
+                      @endphp
                       @foreach ($report as $report)
                       <tr>
+                        <td>{{ $sl++ }}</td>
                         <td>{{ $report->serial_number }}</td>
                         <td>{{ $report->name }}</td>
                         <td>{{ $report->user_name }}</td>
                         <td>{{ $report->cylinder_number }}</td>
                         <td>{{ $report->test_date }}</td>
                         <td>
-                          <a href="" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                          <a href="{{route('admin.report.view',$report->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                           
-                          <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                          <a href="{{route('admin.report.edit',$report->id)}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                          <a href="{{route('admin.report.del',$report->id)}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                         </td>
                       </tr>
                       @endforeach

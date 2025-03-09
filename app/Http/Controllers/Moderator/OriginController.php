@@ -14,7 +14,7 @@ class OriginController extends Controller
     }
     //Load Table File
     public function table(){
-        $origin=Origin::all();
+        $origin = Origin::orderBy('id', 'desc')->get();
         return view('Moderator.Origin.all-origin',compact('origin'));
     }
     public function save(Request $req){

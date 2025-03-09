@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\CylinderController;
 use App\Http\Controllers\Admin\OriginController;
@@ -45,7 +46,17 @@ Route::get('/Admin-All-Cylinder-Report', [ReportController::class, 'table'])->mi
         ->name('all.report');
 Route::post('/Admin-Save-Report', [ReportController::class, 'save'])->middleware(['auth', 'verified'])
         ->name('save.report');
+Route::get('/Admin-view-Report/{id}', [ReportController::class, 'view'])->name('report.view');
+Route::get('/Admin-Edit-Report/{id}', [ReportController::class, 'edit'])->name('report.edit');
+Route::get('/Admin-Delete-Report/{id}', [ReportController::class, 'del'])->name('report.del');
+Route::post('/Admin-Update-Report', [ReportController::class, 'update'])->middleware(['auth', 'verified'])
+->name('update.report');
 
+// User-details
+Route::get('/Admin-All-User-Details', [UserController::class, 'userdetails'])->middleware(['auth', 'verified'])
+        ->name('all.user');
+Route::get('/Admin-Edit-User/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/Admin-profile', [UserController::class, 'update'])->name('profile.update');
 
 Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

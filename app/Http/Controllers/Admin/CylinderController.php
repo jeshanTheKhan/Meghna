@@ -14,7 +14,7 @@ class CylinderController extends Controller
     }
     //View Table File
     public function table(){
-        $cylinder=Cylinder::all()->where('status',1);
+        $cylinder = Cylinder::where('status', 1)->orderBy('id', 'desc')->get();
         return view('Admin.Cylinder.all-cylinder',compact('cylinder'));
     }
     // Save Cylinder

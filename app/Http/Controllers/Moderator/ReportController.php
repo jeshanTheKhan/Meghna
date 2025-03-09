@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Moderator;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Origin;
@@ -18,7 +18,7 @@ class ReportController extends Controller
     }
     //Load Table File
     public function table(){
-        $report = Report::where('status', 1)->orderBy('id', 'desc')->get();
+        $report = Report::orderBy('id', 'desc')->get();
         return view('Moderator.Report.all-report',compact('report'));
     }
     // Save Report
@@ -39,6 +39,7 @@ class ReportController extends Controller
         $store->cylinder_type=$req->cylinder_type;
         $store->marking_defects=$req->marking_defects;
         $store->crack=$req->crack;
+        $store->dents=$req->dents;
         $store->thred_condition=$req->thred;
         $store->inside_condition=$req->Inside;
         $store->actual_weight=$req->actual_weight;
@@ -59,7 +60,8 @@ class ReportController extends Controller
     // View Report
     public function view($id){
         $report=Report::find($id);
-        return view('Moderator.Report.all-report-view',compact('report'));
+        $pdf = Pdf::loadView('all-report-view',compact('report'));
+        return $pdf->stream('invoice.pdf');
     }
     public function edit($id){
         $report=Report::find($id);
@@ -84,6 +86,7 @@ class ReportController extends Controller
         $store->cylinder_type = $req->cylinder_type ?? $store->cylinder_type;
         $store->marking_defects = $req->marking_defects ?? $store->marking_defects;
         $store->crack = $req->crack ?? $store->crack;
+        $store->dents = $req->dents ?? $store->dents;
         $store->thred_condition = $req->thred ?? $store->thred_condition;
         $store->inside_condition = $req->Inside ?? $store->inside_condition;
         $store->actual_weight = $req->actual_weight ?? $store->actual_weight;

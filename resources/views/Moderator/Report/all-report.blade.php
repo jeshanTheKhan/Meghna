@@ -63,6 +63,7 @@
                   <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                       <tr>
+                        <th>Serial ID</th>
                         <th>Serial Number</th>
                         <th>Name</th>
                         <th>Username</th>
@@ -74,8 +75,12 @@
 
 
                     <tbody>
+                      @php
+                        $sl=1;
+                      @endphp
                       @foreach ($report as $report)
                       <tr>
+                        <td>{{ $sl++ }}</td>
                         <td>{{ $report->serial_number }}</td>
                         <td>{{ $report->name }}</td>
                         <td>{{ $report->user_name }}</td>

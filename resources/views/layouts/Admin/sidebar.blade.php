@@ -4,6 +4,11 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
+                <li><a><i class="fa fa-user"></i> User details update <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{{ route('admin.all.user') }}">All-Client</a></li>
+                  </ul>
+                </li>
                 <li><a><i class="fa fa-user"></i> Client Details <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{{ route('admin.add.client') }}">Add-Client</a></li>
