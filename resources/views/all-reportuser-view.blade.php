@@ -279,7 +279,7 @@ footer {
 
         <div class="report-header">
             <div class="serial-number">
-                <p>S/N: {{ $report->serial_number }} <span style="margin-left: 120px;font-size:24px;font-weight:bold;">CNG CYLINDER TEST REPORT</span></p>
+                <p style="font-weight: bold">S/N: {{ $report->serial_number }} <span style="margin-left: 120px;font-size:20px;font-weight:bold;">CNG CYLINDER TEST REPORT</span></p>
             </div>
             <div class="report-title">
                 
@@ -287,7 +287,7 @@ footer {
         </div>
 
         <div class="test-date">
-            <p>Date Of Test: <span style="margin-left: 220px;">{{ $report->test_date }}</span></p>
+            <p style="font-weight: bold">Date Of Test: <span style="margin-left: 220px;">{{ $report->test_date }}</span></p>
         </div>
 
         <section class="owner-info">
@@ -312,7 +312,7 @@ footer {
             </div>
             <div class="info-row">
                 <p><span class="info-label">Marked Weight:</span> <span style="margin-left: 207px;">{{ $report->marked_weight }}</span></p>
-                <p><span class="info-label">Cylinder Installation / Use Date:</span> <span style="margin-left: 88px;">{{ $report->cylinder_installation }}</span></p>
+                <p><span class="info-label">Cylinder Installation / Use Date:</span> <span style="margin-left: 88px;">APROXIMATELY <span style="font-size: 11px;margin-top:2px;">(No information Is Known About This Vehicle Owner) </span></p>
                 <p><span class="info-label">Cylinder Type / Standard:</span> <span style="margin-left: 133px;">{{ $report->cylinder_type }}</span></p>
             </div>
         </section>

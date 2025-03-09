@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2025 at 04:55 AM
+-- Generation Time: Mar 09, 2025 at 06:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,6 +67,13 @@ CREATE TABLE `cylinder` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cylinder`
+--
+
+INSERT INTO `cylinder` (`id`, `name`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'SHPCL', 1, NULL, '2025-03-08 22:53:47', '2025-03-08 22:53:47');
 
 -- --------------------------------------------------------
 
@@ -159,6 +166,13 @@ CREATE TABLE `origin_table` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `origin_table`
+--
+
+INSERT INTO `origin_table` (`id`, `name`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'INDIA', 1, NULL, '2025-03-08 22:53:58', '2025-03-08 22:53:58');
+
 -- --------------------------------------------------------
 
 --
@@ -190,7 +204,7 @@ CREATE TABLE `report_table` (
   `manufacture_date` varchar(255) NOT NULL,
   `water_capacity` varchar(255) NOT NULL,
   `marked_weight` varchar(255) NOT NULL,
-  `cylinder_installation` varchar(255) NOT NULL,
+  `cylinder_installation` varchar(255) DEFAULT NULL,
   `cylinder_type` varchar(255) NOT NULL,
   `marking_defects` varchar(255) NOT NULL,
   `crack` varchar(255) NOT NULL,
@@ -234,7 +248,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('QdWiBfneK58kZcrb0l2QtRrXAgB4CME3UGNTYCsU', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidFFITG9TVnZMUno5U0ViVzlCdEpCdzNnUFhZYnpEdFZ2Tno1YTFHMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHA6Ly9sb2NhbGhvc3QvTWVnaG5hIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741492510);
+('QdWiBfneK58kZcrb0l2QtRrXAgB4CME3UGNTYCsU', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidFFITG9TVnZMUno5U0ViVzlCdEpCdzNnUFhZYnpEdFZ2Tno1YTFHMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHA6Ly9sb2NhbGhvc3QvTWVnaG5hIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741492510),
+('yYqe0NFWCpvJU3KVfjl3kCfA4cvVvLLgBAr7TQay', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibXBrd1JJZ1o1UTNPTlQxS2pFOGwxVkhYQ0FXV2RSRkNMMG9GTnZvWiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjM6Imh0dHA6Ly9sb2NhbGhvc3QvTWVnaG5hIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1741499928);
 
 -- --------------------------------------------------------
 
@@ -260,8 +275,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `user_name`, `user_role`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Md.Moshin Khan', '@moshin13', 'admin', 'moshinkhan1303@gmail.com', '2025-03-08 21:49:58', '$2y$12$0PyN7uyxhxYGwgVPOUWgVOgQ4sCUXaq0VnvL4TMplze3jM/8T421W', 'nW5LfTnPOoxTibOwIRJr5Bzd0i3xwKzQwGW7Dl07aRVTF2L3WiM02FCv5OHg', '2025-03-08 21:49:58', '2025-03-08 21:49:58'),
-(2, 'Al Amin', '@alamin', 'moderator', 'meghna.retesting.cng@gmail.com', '2025-03-08 21:49:58', '$2y$12$IxlHXI5hOckxv6YVep7Ibuo2LRIPL4sFxhKEtEK0Z59V4eEhILMdK', '0bZikhldyhwwS4cLrbtLwtwrKIY3jwN2zXllJ5JLeWN4oQW5zwdVCOH41RKU', '2025-03-08 21:49:58', '2025-03-08 21:49:58');
+(1, 'Md.Moshin Khan', '@moshin13', 'admin', 'moshinkhan1303@gmail.com', '2025-03-08 21:49:58', '$2y$12$0PyN7uyxhxYGwgVPOUWgVOgQ4sCUXaq0VnvL4TMplze3jM/8T421W', '9IolF4mQUG2aZL1rsQMmGEWcGXAjJpOZQtnAWvlK0lTtt8Z48rHLVJd07lKH', '2025-03-08 21:49:58', '2025-03-08 21:49:58'),
+(2, 'Al Amin', '@alamin', 'moderator', 'meghna.retesting.cng@gmail.com', '2025-03-08 21:49:58', '$2y$12$IxlHXI5hOckxv6YVep7Ibuo2LRIPL4sFxhKEtEK0Z59V4eEhILMdK', 'z9ijV9eP9HFbyHal0MnKJZKje3DQehfgbfAPd6FqhFyh3zz9aQUIvoC4KnrW', '2025-03-08 21:49:58', '2025-03-08 21:49:58'),
+(3, 'alomgir', '@alomgir_247', 'client', NULL, NULL, '$2y$12$ssC1Vw9wDtZ6r4jB3N9TXOlI8SzPX6wDaQxPzJL2k1kazuWCEdUuC', NULL, '2025-03-08 22:53:10', '2025-03-08 22:53:10');
 
 --
 -- Indexes for dumped tables
@@ -353,7 +369,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cylinder`
 --
 ALTER TABLE `cylinder`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -377,19 +393,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `origin_table`
 --
 ALTER TABLE `origin_table`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `report_table`
 --
 ALTER TABLE `report_table`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

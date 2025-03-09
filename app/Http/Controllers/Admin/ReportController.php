@@ -13,7 +13,7 @@ class ReportController extends Controller
 {
     //Load Add File
     public function index(){
-        $cylinder=cylinder::all()->where('status',1);
+        $cylinder=Cylinder::all()->where('status',1);
         $origin=Origin::all()->where('status',1);
         return view('Admin.Report.add-report',compact('cylinder','origin'));
     }

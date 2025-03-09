@@ -14,12 +14,12 @@ class CylinderController extends Controller
     }
     //View Table File
     public function table(){
-        $cylinder = Cylinder::where('status', 1)->orderBy('id', 'desc')->get();
+        $cylinder = cylinder::where('status', 1)->orderBy('id', 'desc')->get();
         return view('Moderator.Cylinder.all-cylinder',compact('cylinder'));
     }
     // Save Cylinder
     public function save(Request $req){
-        $store=new Cylinder();
+        $store=new cylinder();
         $store->name=$req->name;
         $store->save();
         return redirect()->route('moderator.all.cylinder-manu');

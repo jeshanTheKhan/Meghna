@@ -58,13 +58,30 @@
                                 <br />
                                 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('moderator.save.report') }}">
                                     @csrf
-                                     {{-- Manufacture Date --}}
+                                     {{-- Test Date --}}
                                      <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align ">Test Date <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" name="test_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Test Date <span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="test_date" class="date-picker form-control" name="test_date" placeholder="dd-mm-yyyy" type="text" required="required" 
+                                                onfocus="(this.type='date')" 
+                                                onmouseover="(this.type='date')" 
+                                                onclick="(this.type='date')" 
+                                                onblur="formatDate(this)" 
+                                                onmouseout="timeFunctionLong(this)">
                                             <script>
+                                                function formatDate(input) {
+                                                    if (input.value) {
+                                                        let date = new Date(input.value);
+                                                        let formattedDate = ("0" + date.getDate()).slice(-2) + "-" + 
+                                                                            ("0" + (date.getMonth() + 1)).slice(-2) + "-" + 
+                                                                            date.getFullYear();
+                                                        input.type = 'text';
+                                                        input.value = formattedDate;
+                                                    } else {
+                                                        input.type = 'text';
+                                                    }
+                                                }
+                                    
                                                 function timeFunctionLong(input) {
                                                     setTimeout(function() {
                                                         input.type = 'text';
@@ -73,6 +90,7 @@
                                             </script>
                                         </div>
                                     </div>
+                                    
                                     {{-- Serial Number --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Serial Number <span class="required">*</span>
@@ -141,19 +159,38 @@
                                     </div>
                                     {{-- Manufacture Date --}}
                                     <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align ">Manufacture Date <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" name="manu_date" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Manufacture Date <span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="date-picker form-control" id="manu_date" 
+                                                   name="manu_date" placeholder="dd-mm-yyyy" type="text" required="required" 
+                                                   onfocus="changeToDate(this)" onmouseover="changeToDate(this)" 
+                                                   onclick="changeToDate(this)" onblur="formatDate(this)" 
+                                                   onmouseout="timeFunctionLong(this)">
                                             <script>
+                                                function changeToDate(input) {
+                                                    input.type = 'date';
+                                                }
+                                    
+                                                function formatDate(input) {
+                                                    if (input.value) {
+                                                        let date = new Date(input.value);
+                                                        let formattedDate = ('0' + date.getDate()).slice(-2) + '-' + 
+                                                                            ('0' + (date.getMonth() + 1)).slice(-2) + '-' + 
+                                                                            date.getFullYear();
+                                                        input.type = 'text';
+                                                        input.value = formattedDate;
+                                                    }
+                                                }
+                                    
                                                 function timeFunctionLong(input) {
                                                     setTimeout(function() {
-                                                        input.type = 'text';
+                                                        formatDate(input);
                                                     }, 60000);
                                                 }
                                             </script>
                                         </div>
                                     </div>
+                                    
                                     {{-- Water Capacity --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Water Capacity <span class="required">*</span>
@@ -170,14 +207,7 @@
                                             <input type="text" id="first-name" name="marked_weight" required="required" class="form-control ">
                                         </div>
                                     </div>
-                                    {{-- Cylinder Installation/Use Date --}}
-                                    <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Installation/Use Date <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 ">
-                                            <input type="text" id="first-name" name="cylinder_installation" required="required" class="form-control ">
-                                        </div>
-                                    </div>
+                                    
                                     {{-- Cylinder Type / Standard --}}
                                     <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Cylinder Type / Standard <span class="required">*</span>
@@ -307,19 +337,34 @@
                                     </div>
                                     {{-- Next Re-Test Time --}}
                                     <div class="item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3 label-align ">Next Re-Test Time <span class="required">*</span>
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">
+                                            Next Re-Test Time <span class="required">*</span>
                                         </label>
-                                        <div class="col-md-6 col-sm-6 ">
-                                            <input class="date-picker form-control" placeholder="dd-mm-yyyy" name="next_test" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
+                                        <div class="col-md-6 col-sm-6">
+                                            <input id="next_test" class="date-picker form-control" placeholder="dd-mm-yyyy" name="next_test" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="formatDate(this)" onmouseout="timeFunctionLong(this)">
                                             <script>
                                                 function timeFunctionLong(input) {
-                                                    setTimeout(function() {
+                                                    setTimeout(function () {
                                                         input.type = 'text';
                                                     }, 60000);
+                                                }
+                                    
+                                                function formatDate(input) {
+                                                    if (input.value) {
+                                                        let date = new Date(input.value);
+                                                        let day = String(date.getDate()).padStart(2, '0');
+                                                        let month = String(date.getMonth() + 1).padStart(2, '0');
+                                                        let year = date.getFullYear();
+                                                        input.type = 'text';
+                                                        input.value = `${day}-${month}-${year}`;
+                                                    } else {
+                                                        input.type = 'text';
+                                                    }
                                                 }
                                             </script>
                                         </div>
                                     </div>
+                                    
                                      {{-- Physical Properties result --}}
                                      <div class="item form-group">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align ">Physical Properties result</label>

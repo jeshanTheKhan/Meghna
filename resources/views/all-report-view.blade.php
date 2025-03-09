@@ -142,6 +142,9 @@ table {
             padding: 8px;
             text-align: left;
         }
+        tr{
+            font-size:12px;
+        }
         th {
             background-color: #f2f2f2;
         }
@@ -161,6 +164,9 @@ table {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
+        }
+        tr{
+            font-size: 12px;
         }
         th {
             font-size: 10px ;
@@ -258,7 +264,7 @@ footer {
 
         <div class="report-header" style="margin-top:120px">
             <div class="serial-number">
-                <p>S/N: {{ $report->serial_number }} <span style="margin-left: 120px;font-size:24px;font-weight:bold;">CNG CYLINDER TEST REPORT</span></p>
+                <p style="font-weight: bold">S/N: {{ $report->serial_number }} <span style="font-size:15px;font-weight:bold;"><u style="margin-left: 120px;margin-top-5px;">CNG CYLINDER TEST REPORT</u></span></p>
             </div>
         </div>
 
@@ -273,10 +279,10 @@ footer {
                 <p>Cylinder No : <span style="margin-left: 232px;">{{ $report->cylinder_number }}</span></p>
                 <p>Country Of Origin : <span style="margin-left: 188px;">{{ $report->cylinder_origin }}</span></p>
                 <p>Manufacturing Date : <span style="margin-left: 173px;">{{ $report->manufacture_date }}</span></p>
-                <p>Water Capacity : <span style="margin-left: 207px;">{{ $report->water_capacity }}</span></p>
-                <p>Marked Weight : <span style="margin-left: 208px;">{{ $report->marked_weight }}</span></p>
-                <p>Cylinder Installation / Use Date : <span style="margin-left: 88px;">{{ $report->cylinder_installation }}</span></p>
-                <p>Cylinder Type / Standard : <span style="margin-left:133px;">{{ $report->cylinder_type }}</span></p>
+                <p>Water Capacity : <span style="margin-left: 207px;">{{ $report->water_capacity }} L</span></p>
+                <p>Marked Weight : <span style="margin-left: 208px;">{{ $report->marked_weight }} KG</span></p>
+                <p><span class="info-label">Cylinder Installation / Use Date:</span> <span style="margin-left: 85px;">APROXIMATELY <span style="font-size: 10px;margin-top:2px;">(No information Is Known About This Vehicle Owner) </span></p>
+                <p><span class="info-label">Cylinder Type / Standard:</span> <span style="margin-left: 133px;">{{ $report->cylinder_type }}</span></p>
             </div>
         </section>
 
@@ -324,7 +330,7 @@ footer {
                         <tr>
                             <td>Actual Weight</td>
                             <td>{{ $report->actual_weight }} KG</td>
-                            <td>Holding Time</td>
+                            <td>Test Holding Time</td>
                             <td>30 s</td>
                         </tr>
                         <tr>
@@ -341,7 +347,7 @@ footer {
                         </tr>
                     </tbody>
                 </table>
-                <h3 style="margin-left: 220px;margin-top:12px "><u>Next Re-Test : {{ $report->next_retest }}</u></h3>
+                <h3 style="margin-left: 220px;font-size:18px; "><u>Next Re-Test : {{ $report->next_retest }}</u></h3>
             </div>
             <p><strong><u>Conclusion:</u></strong> As The Permanent Volume Expansion Of The CNG Cylinder Is With In Normal Range / Limit. It Is Ready To Use Until Next Re-Test Date.</p>
             <p class="certification"><em><u>It is here by certified that above mentioned CNG Cylinder has been inspected and re-tested in accordance with Rule 51 of the CNG Rule 2005.</u></em></p>

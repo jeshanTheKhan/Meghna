@@ -10,8 +10,8 @@
 
     <title>Add Cylinder Origin | </title>
 
-    @extends('layouts.Moderator.backend')
-    @section('context')
+    @extends('layouts.Admin.backend')
+    @section('content')
         <div class="right_col" role="main">
             <div class="">
                 <div class="page-title">
